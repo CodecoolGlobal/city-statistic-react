@@ -40,7 +40,20 @@
     ]
   },
   "devDependencies": {
+    "@iconify/icons-ant-design": "^1.0.8",
+    "@iconify/icons-bi": "^1.0.6",
+    "@iconify/icons-bpmn": "^1.0.6",
+    "@iconify/icons-carbon": "^1.0.4",
+    "@iconify/icons-clarity": "^1.0.0",
+    "@iconify/icons-emojione-monotone": "^1.0.7",
+    "@iconify/icons-fa-regular": "^1.0.6",
+    "@iconify/icons-foundation": "^1.0.5",
+    "@iconify/icons-ic": "^1.0.14",
+    "@iconify/icons-la": "^1.0.0",
+    "@iconify/icons-ps": "^1.0.3",
     "@iconify/icons-simple-line-icons": "^1.0.3",
+    "@iconify/icons-whh": "^1.0.3",
+    "@iconify/icons-zondicons": "^1.0.0",
     "@iconify/react": "^1.1.3"
   }
 }

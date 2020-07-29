@@ -35,15 +35,29 @@ export default function CityStat(props) {
         <p>{cityData[0].cityName}</p>
         <p>{cityData[0].citySlug}</p>
         <img src={cityData[0].image} alt="" />
-        <span>
+
+        <div
+              style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(350px, max-content))",
+                  justifyContent: "center",
+                  gridGap: "1rem",
+                  overFlow: "auto",
+                  marginTop: "5%",
+                  marginBottom: "2%",
+              }}
+          >
+
           {cityData[0].scores.map((score) => (
             <Score name={score.name} score={score.score} />
           ))}
-        </span>
-        <span>
+
+
           <Salary salary={cityData[0].salaries} />
-        </span>
+
+          </div>
       </div>
+
     );
   }
 }
