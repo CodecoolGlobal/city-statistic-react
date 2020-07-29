@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 export default function WorldMap() {
   return (
@@ -1003,7 +1003,6 @@ function removeColorful(e) {
 }
 function relocate(e) {
   e.preventDefault();
-  const id = e.currentTarget.id;
   window.location.href = `http://localhost:8080/continent/${e.currentTarget.id}`;
 }
 
