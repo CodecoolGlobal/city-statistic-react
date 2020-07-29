@@ -4,7 +4,7 @@ export default function SearchCity() {
   return (
     <div>
       <input id="search-input" type="text" onChange={givePossibleSearch} />
-      <input type="submit" onClick={search} />
+      <input type="submit" onClick={search} value="search" />
       <div id="search-result"></div>
     </div>
   );
