@@ -1,14 +1,45 @@
 import React from "react";
+import styled from "styled-components";
 
 export default function SearchCity() {
   return (
-    <div>
-      <input id="search-input" type="text" onChange={givePossibleSearch} />
-      <input type="submit" onClick={search} value="search" />
+    <SearchContainer>
+      <Input id="search-input" type="text" onChange={givePossibleSearch} />
+      <Button type="submit" onClick={search} value="search">
+        search
+      </Button>
       <div id="search-result"></div>
-    </div>
+    </SearchContainer>
   );
 }
+
+const SearchContainer = styled.div`
+  float: right;
+  margin-top: 0.7%;
+`;
+
+const Input = styled.input`
+  padding: 6px;
+  margin-top: 2px;
+  font-size: 17px;
+  border: none;
+  border: 2px solid black;
+  border-radius: 4px;
+`;
+
+const Button = styled.button`
+  float: right;
+  padding: 8px;
+  margin-top: 2px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background: #ccc;
+  }
+`;
 
 let cityNameList = [
   "aarhus",
