@@ -22,7 +22,7 @@ export default function Header() {
     textAlign: "center",
     padding: "14px 16px",
     textDecoration: "none",
-    fontSize: "17px",
+    fontSize: "25px",
     marginTop: "0.55%",
   };
 

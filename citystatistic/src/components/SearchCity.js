@@ -20,7 +20,7 @@ const SearchContainer = styled.div`
 
 const Input = styled.input`
   padding: 6px;
-  margin-top: 2px;
+  margin-top: 8px;
   font-size: 17px;
   border: none;
   border: 2px solid black;
@@ -30,7 +30,7 @@ const Input = styled.input`
 const Button = styled.button`
   float: right;
   padding: 8px;
-  margin-top: 2px;
+  margin-top: 8px;
   margin-right: 16px;
   background: #ddd;
   font-size: 17px;

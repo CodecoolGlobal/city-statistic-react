@@ -1,17 +1,12 @@
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
 
 export default function DisplayCity(props) {
   return (
-    <div>
-      <p>==========================</p>
-      <p>{props.name.toUpperCase()}</p>
-      {props.scores.map((score) => (
-        <div key={uuidv4()}>
-          <p>{score.name}</p>
-          <p>10/{score.score}</p>
-        </div>
-      ))}
+    <div className="card">
+      <img className="card-img layer" src={props.image} alt={props.name} />
+      <div className="card-img-overlay text-white d-flex flex-column justify-content-center">
+        <h4 className="card-title">{props.name}</h4>
+      </div>
     </div>
   );
 }

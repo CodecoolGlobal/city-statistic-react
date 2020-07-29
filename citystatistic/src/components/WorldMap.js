@@ -2,7 +2,7 @@ import React from "react";
 
 export default function WorldMap() {
   return (
-    <div style={{ marginTop: "10%" }}>
+    <div style={{ marginTop: "15%" }}>
       <svg
         id="world"
         xmlns="http://www.w3.org/2000/svg"
@@ -507,7 +507,7 @@ function removeColorful(e) {
 }
 function relocate(e) {
   e.preventDefault();
-  window.location.href = `http://localhost:8080/continent/${e.currentTarget.id}`;
+  window.location.href = `/continent/${e.currentTarget.id}`;
 }
 
 let divStyle = {
