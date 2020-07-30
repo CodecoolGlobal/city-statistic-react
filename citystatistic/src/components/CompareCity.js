@@ -270,15 +270,15 @@ export default function CompareCity() {
     "zurich",
   ];
   return (
-    <div id="compare-container">
-      <div>
+    <div className="compare-container">
+      <div className="left">
         <select name="city" id="city-name">
           {cityNameList.map((city) => (
             <option value={city}>{city.toUpperCase()}</option>
           ))}
         </select>
       </div>
-      <div>
+      <div className="right">
         <select name="city" id="city-name2">
           {cityNameList.map((city) => (
             <option value={city}>{city.toUpperCase()}</option>

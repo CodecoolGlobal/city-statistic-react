@@ -79,6 +79,17 @@ code {
   color: white;
 }
 
-#compare-container {
+.compare-container {
   position: fixed;
+  top: 40%;
+  left: 20%;
+  width: 50%;
+}
+
+.compare-container .right {
+  float: right;
+}
+
+.compare-container .left {
+  float: left;
 }
