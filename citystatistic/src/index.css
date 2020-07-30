@@ -33,7 +33,7 @@ code {
   text-align: center;
   font-size: 25px;
   margin-top: 0.55%;
-  margin-left: 33%;
+  margin-left: 30%;
   padding: 14px 16px;
 }
 
@@ -77,4 +77,8 @@ code {
 
 #job-salary {
   color: white;
+}
+
+#compare-container {
+  position: fixed;
 }

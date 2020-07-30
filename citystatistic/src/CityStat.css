@@ -1,0 +1,121 @@
+/* -------- =Structure -------*/
+
+* {
+  box-sizing: border-box;
+}
+
+/* img {
+  width: 100%;
+} */
+
+.container {
+  width: 980px;
+  margin: auto;
+}
+
+.container-fluid {
+  width: 100%;
+  min-width: 760px; /* Adjust as needed */
+}
+
+/* -------- =Column Layout -------*/
+
+.col-1 {
+  width: 8.33333333%;
+}
+.col-2 {
+  width: 16.66666667%;
+}
+.col-3 {
+  width: 25%;
+}
+.col-4 {
+  width: 33.33333333%;
+}
+.col-5 {
+  width: 41.66666667%;
+}
+.col-6 {
+  width: 50%;
+}
+.col-7 {
+  width: 54.33%;
+}
+.col-8 {
+  width: 66.66666667%;
+}
+.col-9 {
+  width: 75%;
+}
+.col-10 {
+  width: 83.33333333%;
+}
+.col-11 {
+  width: 91.66666667%;
+}
+.col-12 {
+  width: 100%;
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+  float: left;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.row:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+/* -------- =Common Sections -------*/
+
+h2 {
+  margin: 60px 0 30px 0;
+  text-align: center;
+}
+
+/* -------- =full-width-image List -------*/
+
+.full-width-image {
+  height: 350px;
+  background-image: url("https://d13k13wj6adfdf.cloudfront.net/urban_areas/melbourne_web-c18afdd50c.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  text-align: center;
+}
+
+.full-width-image h3 {
+  color: #fff;
+  font-size: 480%;
+  font-weight: 700;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  margin: 8% 0 0 0;
+  padding: 15px 30px;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: rgb(44, 44, 44);
+}
+
+.full-width-image p {
+  color: #333;
+  font-size: 140%;
+  background-color: #fff;
+  display: inline-block;
+  margin: 4px 0 0 0;
+  padding: 8px;
+}

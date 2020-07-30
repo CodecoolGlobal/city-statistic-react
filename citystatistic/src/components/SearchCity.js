@@ -8,7 +8,7 @@ export default function SearchCity() {
       <Button type="submit" onClick={search} value="search">
         search
       </Button>
-      <div id="search-result"></div>
+      <div className="autocomplete-items" id="search-result"></div>
     </SearchContainer>
   );
 }
@@ -19,6 +19,7 @@ const SearchContainer = styled.div`
 `;
 
 const Input = styled.input`
+  width: 74%;
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
@@ -322,7 +323,7 @@ function givePossibleSearch(e) {
       let length = value.length;
       let subCity = city.substr(start, length);
       let resultCity = city.replace(subCity, "<b>" + subCity + "</b>");
-      containsDIV.innerHTML += `<span class="city-contained">${resultCity.toUpperCase()}</span> </br>`;
+      containsDIV.innerHTML += `<div class="city-contained">${resultCity.toUpperCase()}</div>`;
     }
     const inputField = document.querySelector("#search-input");
     const containedCities = document.querySelectorAll(".city-contained");
@@ -340,6 +341,6 @@ function search(e) {
   const inputField = document.querySelector("#search-input");
   e.preventDefault();
   if (cityNameList.includes(inputField.value.toLowerCase())) {
-    window.location.href = `http://localhost:8080/cityalldata/${inputField.value.toLowerCase()}/`;
+    window.location.href = `/city?slug=${inputField.value.toLowerCase()}`;
   }
 }
