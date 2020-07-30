@@ -328,17 +328,27 @@ export default function CompareCity() {
       <div style={{ textAlign: "center" }}>
         <div className="compare-container">
           <div className="left">
-            <select
-              style={{ maxWidth: "90%" }}
-              value={leftCity}
-              name="city"
-              id="city-name"
-              onChange={leftChangeCity}
-            >
-              {cityNameList.map((city) => (
-                <option value={city}>{city.toUpperCase()}</option>
-              ))}
-            </select>
+            <div className="card">
+              <img
+                className="card-img layer"
+                src={cityData[0].image}
+                alt={cityData[0].name}
+              />
+              <div className="card-img-overlay text-white d-flex flex-column justify-content-center">
+                <select
+                  style={{ maxWidth: "90%" }}
+                  value={leftCity}
+                  name="city"
+                  id="city-name"
+                  onChange={leftChangeCity}
+                >
+                  {cityNameList.map((city) => (
+                    <option value={city}>{city.toUpperCase()}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
             <div id="left-result">
               {cityData[0].scores.map((score) => (
                 <LeftStat name={score.name} score={score.score} />
@@ -348,17 +358,27 @@ export default function CompareCity() {
           </div>
 
           <div className="right">
-            <select
-              style={{ maxWidth: "90%" }}
-              value={rightCity}
-              name="city"
-              id="city-name2"
-              onChange={rightChangeCity}
-            >
-              {cityNameList.map((city) => (
-                <option value={city}>{city.toUpperCase()}</option>
-              ))}
-            </select>
+            <div className="compare-card card">
+              <img
+                className="card-img layer"
+                src={rightCityData[0].image}
+                alt={rightCityData[0].name}
+              />
+              <div className="card-img-overlay text-white d-flex flex-column justify-content-center">
+                <select
+                  style={{ maxWidth: "90%" }}
+                  value={rightCity}
+                  name="city"
+                  id="city-name2"
+                  onChange={rightChangeCity}
+                >
+                  {cityNameList.map((city) => (
+                    <option value={city}>{city.toUpperCase()}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
             <div id="right-result">
               {rightCityData[0].scores.map((score) => (
                 <Score name={score.name} score={score.score} />
