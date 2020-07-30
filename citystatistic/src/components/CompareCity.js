@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LeftStat from "../components/LeftStat";
 import Score from "../components/Score";
+import Salary from "../components/Salary";
 import axios from "axios";
 
 export default function CompareCity() {
@@ -341,6 +342,7 @@ export default function CompareCity() {
               {cityData[0].scores.map((score) => (
                 <LeftStat name={score.name} score={score.score} />
               ))}
+              <Salary salary={cityData[0].salaries} />
             </div>
           </div>
 
@@ -359,6 +361,7 @@ export default function CompareCity() {
               {rightCityData[0].scores.map((score) => (
                 <Score name={score.name} score={score.score} />
               ))}
+              <Salary salary={rightCityData[0].salaries} />
             </div>
           </div>
         </div>

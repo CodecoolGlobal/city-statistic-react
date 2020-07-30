@@ -10,7 +10,7 @@ export default function Salary(props) {
     let jobSalary = document.querySelector("#job-salary");
     for (let data of props.salary) {
       if (data.title === optionValue) {
-        jobSalary.innerHTML = data.percentile_50 + "$";
+        jobSalary.innerHTML = data.percentile_50 + " $";
       }
     }
   }

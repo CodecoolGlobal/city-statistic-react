@@ -83,17 +83,10 @@ code {
   display: inline-block;
   vertical-align: middle;
   column-count: 2;
+  column-gap: 10%;
   margin-top: 8%;
   /* left: 20%; */
   width: 40%;
-}
-
-.compare-container .right {
-  margin-left: 5%;
-}
-
-.compare-container .left {
-  margin-right: 5%;
 }
 
 #search-button {
