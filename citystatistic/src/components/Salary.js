@@ -31,7 +31,12 @@ export default function Salary(props) {
             </span>
           ))}
         </b>
-        <select name="jobs" id="jobs" onChange={selectJob}>
+        <select
+          style={{ maxWidth: "90%" }}
+          name="jobs"
+          id="jobs"
+          onChange={selectJob}
+        >
           {props.salary.map((job) => (
             <option value={job.title}>{job.title}</option>
           ))}

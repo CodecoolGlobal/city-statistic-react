@@ -329,6 +329,7 @@ export default function CompareCity() {
         <div className="compare-container">
           <div className="left">
             <select
+              style={{ maxWidth: "90%" }}
               value={leftCity}
               name="city"
               id="city-name"
@@ -348,6 +349,7 @@ export default function CompareCity() {
 
           <div className="right">
             <select
+              style={{ maxWidth: "90%" }}
               value={rightCity}
               name="city"
               id="city-name2"
