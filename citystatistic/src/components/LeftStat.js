@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Icon } from "@iconify/react";
 import houseIcon from "@iconify/icons-bi/house";
 import moneyBillAlt from "@iconify/icons-fa-regular/money-bill-alt";
@@ -19,7 +20,7 @@ import performingArts from "@iconify/icons-emojione-monotone/performing-arts";
 import peopleTeam from "@iconify/icons-ps/people-team";
 import pictureOutlineBadged from "@iconify/icons-clarity/picture-outline-badged";
 
-export default function Score(props) {
+export default function LeftStat(props) {
   let score = "N/A";
   if (props.score > 0) {
     score = props.score;
@@ -27,7 +28,7 @@ export default function Score(props) {
 
   return (
     //<div className="col-md-3">
-    <div className="stati bg-turquoise left">
+    <div className="stati bg-turquoise">
       <span>
         {(() => {
           switch (props.name) {

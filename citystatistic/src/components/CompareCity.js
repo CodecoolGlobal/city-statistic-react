@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import LeftStat from "../components/LeftStat";
+import Score from "../components/Score";
+import axios from "axios";
 
 export default function CompareCity() {
   const cityNameList = [
@@ -269,22 +272,97 @@ export default function CompareCity() {
     "zagreb",
     "zurich",
   ];
-  return (
-    <div className="compare-container">
-      <div className="left">
-        <select name="city" id="city-name">
-          {cityNameList.map((city) => (
-            <option value={city}>{city.toUpperCase()}</option>
-          ))}
-        </select>
+
+  let [cityData, setCityData] = useState([]);
+  let [rightCityData, setRightCityData] = useState([]);
+  let [leftCity, setLeftCity] = useState("budapest");
+  let [rightCity, setRightCity] = useState("barcelona");
+
+  useEffect(() => {
+    console.log("Running...");
+    if (leftCity !== null) {
+      axios.get(`http://localhost:8080/cityalldata/${leftCity}`).then((res) => {
+        setCityData(() => [res.data]);
+      });
+    }
+  }, [leftCity]);
+
+  useEffect(() => {
+    console.log("Running... (right)");
+    if (rightCity !== null) {
+      axios
+        .get(`http://localhost:8080/cityalldata/${rightCity}`)
+        .then((res) => {
+          setRightCityData(() => [res.data]);
+        });
+    }
+  }, [rightCity]);
+
+  function leftChangeCity() {
+    setLeftCity(document.querySelector("#city-name").value);
+    setCityData([]);
+  }
+  function rightChangeCity() {
+    setRightCity(document.querySelector("#city-name2").value);
+    setRightCityData([]);
+  }
+  if (cityData.length < 1 || rightCityData.length < 1) {
+    return (
+      <table id="wrapper">
+        <tr>
+          <td>
+            <img
+              id="loading"
+              src="/globe.gif"
+              alt="loading globe"
+              width="10%"
+              height="auto"
+            />
+          </td>
+        </tr>
+      </table>
+    );
+  } else {
+    return (
+      <div style={{ textAlign: "center" }}>
+        <div className="compare-container">
+          <div className="left">
+            <select
+              value={leftCity}
+              name="city"
+              id="city-name"
+              onChange={leftChangeCity}
+            >
+              {cityNameList.map((city) => (
+                <option value={city}>{city.toUpperCase()}</option>
+              ))}
+            </select>
+            <div id="left-result">
+              {cityData[0].scores.map((score) => (
+                <LeftStat name={score.name} score={score.score} />
+              ))}
+            </div>
+          </div>
+
+          <div className="right">
+            <select
+              value={rightCity}
+              name="city"
+              id="city-name2"
+              onChange={rightChangeCity}
+            >
+              {cityNameList.map((city) => (
+                <option value={city}>{city.toUpperCase()}</option>
+              ))}
+            </select>
+            <div id="right-result">
+              {rightCityData[0].scores.map((score) => (
+                <Score name={score.name} score={score.score} />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="right">
-        <select name="city" id="city-name2">
-          {cityNameList.map((city) => (
-            <option value={city}>{city.toUpperCase()}</option>
-          ))}
-        </select>
-      </div>
-    </div>
-  );
+    );
+  }
 }

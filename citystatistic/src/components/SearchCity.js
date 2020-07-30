@@ -4,8 +4,13 @@ import styled from "styled-components";
 export default function SearchCity() {
   return (
     <SearchContainer>
-      <Input id="search-input" type="text" onChange={givePossibleSearch} />
-      <Button type="submit" onClick={search} value="search">
+      <Input
+        autoComplete="off"
+        id="search-input"
+        type="text"
+        onChange={givePossibleSearch}
+      />
+      <Button id="search-button" type="submit" onClick={search} value="search">
         search
       </Button>
       <div className="autocomplete-items" id="search-result"></div>
@@ -30,6 +35,7 @@ const Input = styled.input`
 
 const Button = styled.button`
   float: right;
+  background-color: #b1b493;
   padding: 8px;
   margin-top: 8px;
   margin-right: 16px;

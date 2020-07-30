@@ -496,7 +496,7 @@ export default function WorldMap() {
 function colorful(e) {
   let targetChildren = e.currentTarget.children;
   for (const element of targetChildren) {
-    element.style.fill = "red";
+    element.style.fill = "#4F8A8B";
   }
 }
 function removeColorful(e) {
@@ -511,5 +511,5 @@ function relocate(e) {
 }
 
 let divStyle = {
-  color: "red",
+  color: "#4F8A8B",
 };

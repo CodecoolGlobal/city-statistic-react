@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background-image: linear-gradient(0deg, #f8e5ca 0%, #f1bc76 100%);
+  background-image: linear-gradient(0deg, #f8e5ca 0%, #ffcb74 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
   height: 100%;
@@ -10,7 +10,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
   height: 100%;
 }
 
@@ -25,7 +24,7 @@ code {
 }
 
 .header-link:hover {
-  background-color: #dcdcdc;
+  background-color: #b1b493;
 }
 
 #current-time {
@@ -80,16 +79,23 @@ code {
 }
 
 .compare-container {
-  position: fixed;
-  top: 40%;
-  left: 20%;
-  width: 50%;
+  /* position: absolute; */
+  display: inline-block;
+  vertical-align: middle;
+  column-count: 2;
+  margin-top: 8%;
+  /* left: 20%; */
+  width: 40%;
 }
 
 .compare-container .right {
-  float: right;
+  margin-left: 5%;
 }
 
 .compare-container .left {
-  float: left;
+  margin-right: 5%;
+}
+
+#search-button {
+  background-color: #b1b493;
 }
