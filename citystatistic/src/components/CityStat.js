@@ -16,11 +16,15 @@ export default function CityStat(props) {
   }
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8080/cityalldata/${props.match.params.city}`)
-      .then((res) => {
-        setCityData((oldCityData) => [...oldCityData, res.data]);
-      });
+    if (!citySlugs.includes(props.match.params.city)) {
+      window.location.href = "/";
+    } else {
+      axios
+        .get(`http://localhost:8080/cityalldata/${props.match.params.city}`)
+        .then((res) => {
+          setCityData((oldCityData) => [...oldCityData, res.data]);
+        });
+    }
   }, []);
   if (cityData.length < 1) {
     return (
