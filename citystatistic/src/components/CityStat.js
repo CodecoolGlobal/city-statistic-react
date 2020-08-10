@@ -8,7 +8,7 @@ import { AllCitySlugContext } from "../context/AllCitySlugContext";
 
 export default function CityStat(props) {
   let [cityData, setCityData] = useState([]);
-  const citySlugs = useContext(AllCitySlugContext);
+  const [citySlugs] = useContext(AllCitySlugContext);
   console.log(citySlugs);
 
   if (!citySlugs.includes(props.match.params.city)) {

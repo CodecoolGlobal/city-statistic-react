@@ -5,12 +5,13 @@ import "./autoComplete.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import { DefaultCitiesProvider } from "./context/DefaultCitiesContext";
+import { AllCitySlugProvider } from "./context/AllCitySlugContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <DefaultCitiesProvider>
+    <AllCitySlugProvider>
       <App />
-    </DefaultCitiesProvider>
+    </AllCitySlugProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
