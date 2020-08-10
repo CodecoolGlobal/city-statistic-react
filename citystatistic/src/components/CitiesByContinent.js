@@ -44,14 +44,7 @@ export default function CitiesByContinent(props) {
         }}
       >
         {cityData[0].map((city) => (
-          <Link
-            to={{
-              pathname: "/city",
-              query: {
-                slug: city.citySlug,
-              },
-            }}
-          >
+          <Link to={`/city/${city.citySlug}`}>
             <DisplayCity
               key={uuidv4()}
               name={city.cityName}

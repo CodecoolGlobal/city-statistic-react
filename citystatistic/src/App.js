@@ -14,7 +14,7 @@ function App() {
         <Header />
         <Route exact path="/" component={WorldMap} />
         <Route exact path="/continent/:id" component={CitiesByContinent} />
-        <Route exact path="/city" component={CityStat} />
+        <Route exact path="/city/:city" component={CityStat} />
         <Route exact path="/compare" component={CompareCity} />
       </Router>
     </div>

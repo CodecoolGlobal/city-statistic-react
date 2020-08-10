@@ -347,6 +347,6 @@ function search(e) {
   const inputField = document.querySelector("#search-input");
   e.preventDefault();
   if (cityNameList.includes(inputField.value.toLowerCase())) {
-    window.location.href = `/city?slug=${inputField.value.toLowerCase()}`;
+    window.location.href = `/city/${inputField.value.toLowerCase()}`;
   }
 }

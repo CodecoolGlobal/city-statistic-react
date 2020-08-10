@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Score from "../components/Score";
 import Salary from "../components/Salary";
 import "../statCard.css";
 import "../CityStat.css";
+import { AllCitySlugContext } from "../context/AllCitySlugContext";
 
 export default function CityStat(props) {
   let [cityData, setCityData] = useState([]);
+  const citySlugs = useContext(AllCitySlugContext);
+  console.log(citySlugs);
+
+  if (!citySlugs.includes(props.match.params.city)) {
+    window.location.href = "/";
+  }
 
   useEffect(() => {
-    let slug = "";
-    if (!props.location.query) {
-      const search = props.location.search;
-      const params = new URLSearchParams(search);
-      slug = params.get("slug");
-    } else {
-      slug = props.location.query.slug;
-    }
-    axios.get(`http://localhost:8080/cityalldata/${slug}`).then((res) => {
-      setCityData((oldCityData) => [...oldCityData, res.data]);
-    });
+    axios
+      .get(`http://localhost:8080/cityalldata/${props.match.params.city}`)
+      .then((res) => {
+        setCityData((oldCityData) => [...oldCityData, res.data]);
+      });
   }, []);
   if (cityData.length < 1) {
     return (
