@@ -103,3 +103,11 @@ code {
 #search-button {
   background-color: #b1b493;
 }
+
+.star {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(650%, 30%);
+  display: inline-block;
+}
