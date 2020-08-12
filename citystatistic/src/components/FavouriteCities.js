@@ -35,7 +35,7 @@ export default function FavouriteCities() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(500px, max-content))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(31.5%, 31.5%))",
           justifyContent: "center",
           gridGap: "3rem",
           overFlow: "auto",
