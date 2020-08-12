@@ -50,6 +50,7 @@ export default function CitiesByContinent(props) {
               name={city.cityName}
               image={city.cityImage}
               slug={city.citySlug}
+              isFavourite={city.isFavourite}
             />
           </Link>
         ))}

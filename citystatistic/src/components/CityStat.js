@@ -9,11 +9,10 @@ import { AllCitySlugContext } from "../context/AllCitySlugContext";
 export default function CityStat(props) {
   let [cityData, setCityData] = useState([]);
   const [citySlugs] = useContext(AllCitySlugContext);
-  console.log(citySlugs);
 
-  // if (!citySlugs.includes(props.match.params.city)) {
-  //   window.location.href = "/";
-  // }
+  if (!citySlugs.includes(props.match.params.city)) {
+    window.location.href = "/";
+  }
 
   useEffect(() => {
     if (!citySlugs.includes(props.match.params.city)) {
