@@ -34,6 +34,9 @@ export default function Header() {
       <Link className="header-link" style={Links} to="/compare">
         Compare
       </Link>
+      <a className="header-link" style={Links} href="/my-favourite-cities">
+        My Favourites
+      </a>
       <ActualTime />
       <SearchCity />
     </TopNav>
