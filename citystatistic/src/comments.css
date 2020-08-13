@@ -153,3 +153,8 @@ li {
     list-style-type:none;
 }
 
+ul {
+    position: absolute;
+    margin-left: 7.5rem;
+}
+
