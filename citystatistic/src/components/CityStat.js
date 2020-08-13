@@ -72,9 +72,9 @@ export default function CityStat(props) {
           ))}
           <Salary salary={cityData[0].salaries} />
         </div>
+        <Images slug={cityData[0].citySlug} img={cityData[0].images} />
         <CommentForm citySlug={cityData[0].citySlug} />
         <Comment comments={cityData[0].comments} />
-        <Images slug={cityData[0].citySlug} img={cityData[0].images} />
       </div>
     );
   }

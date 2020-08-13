@@ -119,11 +119,3 @@ h2 {
   margin: 4px 0 0 0;
   padding: 8px;
 }
-
-.comment-container li{
-  margin-top: 2px;
-  border-style: solid;
-  border-radius: 5px;
-  border-width: 2px;
-  font-size: larger;
-}
