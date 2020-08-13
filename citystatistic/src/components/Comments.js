@@ -4,12 +4,13 @@ export default function Comments(props) {
     let comments = props.comments;
 
     return (
-        <div className="comment-container">
-            <ul>
+        <div>
+            <ul id="comment-container">
                 {comments.map(function (comment) {
                     return <li>{comment}</li>
                 })}
             </ul>
         </div>
     );
+
 }

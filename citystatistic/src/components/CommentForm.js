@@ -8,6 +8,8 @@ export default function CommentForm(props) {
     function handleSubmit(e) {
         e.preventDefault();
         axios.post('http://localhost:8080/add-comment/' + citySlug, {comment: textContent}).then(res => console.log(res))
+        let commentSection = document.getElementById("comment-container")
+        commentSection.innerHTML += `<li>${textContent}</li>`
     }
 
     function handleChange(e) {
