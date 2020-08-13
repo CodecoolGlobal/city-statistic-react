@@ -120,10 +120,14 @@ h2 {
   padding: 8px;
 }
 
-.comment-container li{
-  margin-top: 2px;
-  border-style: solid;
-  border-radius: 5px;
-  border-width: 2px;
-  font-size: larger;
+comments ul {
+  left: 0;
+}
+
+.comments li {
+  list-style-type: none;
+  margin-top: 10px;
+  width: 100%;
+  background-color: #ffcb74;
+  border-radius: 2px;
 }

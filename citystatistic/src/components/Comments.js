@@ -5,7 +5,7 @@ export default function Comments(props) {
 
     return (
         <div>
-            <ul id="comment-container">
+            <ul id="comment-container" className="comments">
                 {comments.map(function (comment) {
                     return <li>{comment}</li>
                 })}
