@@ -47,27 +47,36 @@ export default function Images(props) {
       },
     });
     props.img.push(files[0].base64);
+    window.location.reload();
   }
-
-  return (
-    <div>
+  if (props.img.length < 1) {
+    return (
       <div class="filebase-container">
         <FileBase64 multiple={true} onDone={getFiles} />
         <button onClick={uploadImage}>upload</button>
       </div>
-
-      <div class="slideshow-container">
-        <div class="mySlides">
-          <img class="slide-image" src={props.img[page]} />
-          {/* <div class="text">Caption Text</div> */}
+    );
+  } else {
+    return (
+      <div>
+        <div class="filebase-container">
+          <FileBase64 multiple={true} onDone={getFiles} />
+          <button onClick={uploadImage}>upload</button>
         </div>
-        <a class="prev" onClick={prevSlide}>
-          &#10094;
-        </a>
-        <a class="next" onClick={nextSlide}>
-          &#10095;
-        </a>
+
+        <div class="slideshow-container">
+          <div class="mySlides">
+            <img class="slide-image" src={props.img[page]} />
+            {/* <div class="text">Caption Text</div> */}
+          </div>
+          <a class="prev" onClick={prevSlide}>
+            &#10094;
+          </a>
+          <a class="next" onClick={nextSlide}>
+            &#10095;
+          </a>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
