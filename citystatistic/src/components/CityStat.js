@@ -3,6 +3,8 @@ import axios from "axios";
 import Score from "../components/Score";
 import Salary from "../components/Salary";
 import Images from "../components/Images";
+import Comment from "./Comments";
+import CommentForm from "./CommentForm";
 import "../statCard.css";
 import "../CityStat.css";
 import { AllCitySlugContext } from "../context/AllCitySlugContext";
@@ -68,10 +70,10 @@ export default function CityStat(props) {
           {cityData[0].scores.map((score) => (
             <Score name={score.name} score={score.score} />
           ))}
-
           <Salary salary={cityData[0].salaries} />
         </div>
-
+        <CommentForm citySlug={cityData[0].citySlug} />
+        <Comment comments={cityData[0].comments} />
         <Images slug={cityData[0].citySlug} img={cityData[0].images} />
       </div>
     );

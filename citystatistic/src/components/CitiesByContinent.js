@@ -6,13 +6,17 @@ import { Link } from "react-router-dom";
 
 export default function CitiesByContinent(props) {
   let [cityData, setCityData] = useState([]);
-
+  const continents = "AF EU NA SA OC AS";
   useEffect(() => {
-    const apiPath = `http://localhost:8080/continent/${props.match.params.id}`;
-    axios.get(apiPath).then((res) => {
-      setCityData((oldCityData) => [...oldCityData, res.data]);
-    });
-  }, []);
+    if (!continents.includes(props.match.params.id)) {
+      window.location.href = "/";
+    } else {
+      const apiPath = `http://localhost:8080/continent/${props.match.params.id}`;
+      axios.get(apiPath).then((res) => {
+        setCityData((oldCityData) => [...oldCityData, res.data]);
+      }, []);
+    }
+  });
 
   if (cityData.length < 1) {
     return (
