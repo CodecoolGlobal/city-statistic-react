@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import FileBase64 from "react-file-base64";
 import axios from "axios";
 import Score from "../components/Score";
 import Salary from "../components/Salary";
@@ -10,7 +9,7 @@ import { AllCitySlugContext } from "../context/AllCitySlugContext";
 
 export default function CityStat(props) {
   let [cityData, setCityData] = useState([]);
-  const [files, setFiles] = useState([]);
+
   const [citySlugs] = useContext(AllCitySlugContext);
 
   if (!citySlugs.includes(props.match.params.city)) {
@@ -28,21 +27,6 @@ export default function CityStat(props) {
         });
     }
   }, []);
-
-  function getFiles(e) {
-    setFiles(e);
-  }
-  function uploadImage(e) {
-    axios({
-      method: "post",
-      url: `http://localhost:8080/saveimage/${cityData[0].citySlug}`,
-      headers: {},
-      data: {
-        base64: `${files[0].base64}`,
-      },
-    });
-    cityData[0].images.push(files[0].base64);
-  }
 
   if (cityData.length < 1) {
     return (
@@ -87,9 +71,8 @@ export default function CityStat(props) {
 
           <Salary salary={cityData[0].salaries} />
         </div>
-        <FileBase64 multiple={true} onDone={getFiles} />
-        <button onClick={uploadImage}>upload</button>
-        <Images img={cityData[0].images} />
+
+        <Images slug={cityData[0].citySlug} img={cityData[0].images} />
       </div>
     );
   }

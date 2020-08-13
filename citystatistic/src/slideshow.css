@@ -1,7 +1,10 @@
 .slideshow-container {
-  max-width: 1000px;
+  height: 500px;
+  width: 900px;
   position: relative;
-  margin: auto;
+  vertical-align: middle;
+  left: 50%;
+  display: table-cell;
 }
 
 .prev,
@@ -27,6 +30,7 @@
 
 .prev:hover,
 .next:hover {
+  color: white;
   background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -62,4 +66,17 @@
 .active,
 .dot:hover {
   background-color: #717171;
+}
+
+.slide-image {
+  max-width: 800px;
+  max-height: 500px;
+  display: block;
+  margin: 0 auto;
+}
+
+.filebase-container {
+  margin-left: 37%;
+  margin-top: 5%;
+  margin-bottom: 2%;
 }
