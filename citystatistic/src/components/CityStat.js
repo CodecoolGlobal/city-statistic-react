@@ -71,9 +71,10 @@ export default function CityStat(props) {
                     <Salary salary={cityData[0].salaries}/>
 
                 </div>
-                <CommentForm citySlug={cityData[0].citySlug}/>
-                <Comment comments={cityData[0].comments}/>
-
+                <div>
+                    <CommentForm citySlug={cityData[0].citySlug}/>
+                    <Comment comments={cityData[0].comments}/>
+                </div>
             </div>
         );
     }
