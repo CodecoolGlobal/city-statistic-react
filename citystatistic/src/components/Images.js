@@ -11,6 +11,7 @@ export default function Images() {
     });
   }, []);
   if (images.length < 1) {
+    console.log(images[0]);
     return (
       <table id="wrapper">
         <tr>
@@ -29,7 +30,9 @@ export default function Images() {
   } else {
     return (
       <div>
-        <img src={images[0]} alt="" width="20%" />
+        {images[0].map((image) => (
+          <img src={image} alt="" width="20%" />
+        ))}
       </div>
     );
   }
