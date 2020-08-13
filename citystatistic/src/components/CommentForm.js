@@ -7,10 +7,11 @@ export default function CommentForm(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        axios.post('http://localhost:8080/add-comment/' + citySlug, {comment: textContent}).then(res => console.log(res))
-        let commentSection = document.getElementById("comment-container")
-        commentSection.innerHTML +=
-            `<li>
+        if (!textContent == "") {
+            axios.post('http://localhost:8080/add-comment/' + citySlug, {comment: textContent}).then(res => console.log(res))
+            let commentSection = document.getElementById("comment-container")
+            commentSection.innerHTML +=
+                `<li>
                 <div class="user-comment-card">
                     <img class="user-avatar" src="https://library.kissclipart.com/20180904/ese/kissclipart-user-icon-png-clipart-computer-icons-user-66fe7db07b02eb73.jpg"/>
                     <div class="user-info">
@@ -23,6 +24,9 @@ export default function CommentForm(props) {
                     </div>
                 </div>
             </li>`
+        }
+        e.target.reset();
+
     }
 
     function handleChange(e) {
@@ -32,7 +36,7 @@ export default function CommentForm(props) {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form id="commentForm" onSubmit={handleSubmit}>
                 <textarea id="myTextarea" onChange={handleChange} placeholder="Add comment..."></textarea>
                 <button id="submit" type="submit">Submit
                 </button>
