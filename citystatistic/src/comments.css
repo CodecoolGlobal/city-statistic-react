@@ -69,7 +69,7 @@
 .user-comment-card {
     background: #fff;
     min-height: 80px;
-    width: 55.5rem;
+    width: 100%;
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
     border: 1px solid #ddd;
     border-radius: 25px;
@@ -152,11 +152,12 @@ i.icon.ion-md-thumbs-down:hover {
 
 li {
     list-style-type: none;
-    width: 40%;
+    width: 65%;
+    position: center;
 }
 
 ul {
-    position: absolute;
     padding-left: 25%;
+    position: center;
 }
 
