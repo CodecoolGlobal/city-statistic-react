@@ -41,8 +41,7 @@ export default function CityStat(props) {
         base64: `${files[0].base64}`,
       },
     });
-    let imgDIV = document.querySelector("#uploadedImage");
-    imgDIV.innerHTML += `<img src=${files[0].base64} alt=""  width="20%" height="20%"/>`;
+    cityData[0].images.push(files[0].base64);
   }
 
   if (cityData.length < 1) {
@@ -90,11 +89,7 @@ export default function CityStat(props) {
         </div>
         <FileBase64 multiple={true} onDone={getFiles} />
         <button onClick={uploadImage}>upload</button>
-        <div id="uploadedImage">
-          {cityData[0].images.map((image) => (
-            <Images imageURL={image} />
-          ))}
-        </div>
+        <Images img={cityData[0].images} />
       </div>
     );
   }
