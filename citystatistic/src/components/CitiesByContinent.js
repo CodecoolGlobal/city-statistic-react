@@ -14,9 +14,9 @@ export default function CitiesByContinent(props) {
       const apiPath = `http://localhost:8080/continent/${props.match.params.id}`;
       axios.get(apiPath).then((res) => {
         setCityData((oldCityData) => [...oldCityData, res.data]);
-      }, []);
+      });
     }
-  });
+  }, []);
 
   if (cityData.length < 1) {
     return (
