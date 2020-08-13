@@ -53,7 +53,9 @@ export default function Images(props) {
     return (
       <div class="filebase-container">
         <FileBase64 multiple={true} onDone={getFiles} />
-        <button onClick={uploadImage}>upload</button>
+        <button id="upload-button" onClick={uploadImage}>
+          upload
+        </button>
       </div>
     );
   } else {

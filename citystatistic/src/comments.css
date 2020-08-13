@@ -90,6 +90,7 @@ h4.user__name {
   margin-top: 0;
   margin-bottom: 0;
   color: #616161;
+  text-align: left;
 }
 
 .user__comment p {
@@ -149,12 +150,16 @@ i.icon.ion-md-thumbs-down:hover {
 }
 
 li {
-  list-style-type: none;
+  /* list-style-type: none;
   width: 65%;
-  position: center;
+  position: center; */
 }
 
 ul {
-  padding-left: 25%;
-  position: center;
+  width: 50%;
+  margin: auto;
+  list-style-type: none;
+  padding-inline-start: 0;
+  /* padding-left: 25%;
+  position: center; */
 }
