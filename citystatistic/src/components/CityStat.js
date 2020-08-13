@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
+import FileBase64 from "react-file-base64";
 import axios from "axios";
 import Score from "../components/Score";
 import Salary from "../components/Salary";
+import Images from "../components/Images";
 import "../statCard.css";
 import "../CityStat.css";
 import { AllCitySlugContext } from "../context/AllCitySlugContext";
 
 export default function CityStat(props) {
   let [cityData, setCityData] = useState([]);
+  const [files, setFiles] = useState([]);
   const [citySlugs] = useContext(AllCitySlugContext);
 
   if (!citySlugs.includes(props.match.params.city)) {
@@ -25,6 +28,23 @@ export default function CityStat(props) {
         });
     }
   }, []);
+
+  function getFiles(e) {
+    setFiles(e);
+  }
+  function uploadImage(e) {
+    axios({
+      method: "post",
+      url: `http://localhost:8080/saveimage/${cityData[0].citySlug}`,
+      headers: {},
+      data: {
+        base64: `${files[0].base64}`,
+      },
+    });
+    let imgDIV = document.querySelector("#uploadedImage");
+    imgDIV.innerHTML += `<img src=${files[0].base64} alt=""  width="20%" height="20%"/>`;
+  }
+
   if (cityData.length < 1) {
     return (
       <table id="wrapper">
@@ -67,6 +87,13 @@ export default function CityStat(props) {
           ))}
 
           <Salary salary={cityData[0].salaries} />
+        </div>
+        <FileBase64 multiple={true} onDone={getFiles} />
+        <button onClick={uploadImage}>upload</button>
+        <div id="uploadedImage">
+          {cityData[0].images.map((image) => (
+            <Images imageURL={image} />
+          ))}
         </div>
       </div>
     );
