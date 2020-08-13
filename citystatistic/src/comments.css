@@ -1,13 +1,4 @@
-
-
-body {
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
 .user-comment-card {
     background: #fff;
     min-height: 80px;
@@ -18,6 +9,7 @@ body {
     display: flex;
     align-items: flex-start;
     padding: 1rem 1rem .5rem;
+    margin-top: 0.5rem;
 }
 
 h4.user__name {
@@ -27,6 +19,8 @@ h4.user__name {
 }
 
 .user__comment {
+    font-weight: bolder;
+    font-size: larger;
     margin-top: 0;
     margin-bottom: 0;
     color: #616161;
@@ -58,10 +52,6 @@ img.user-avatar {
     margin-top: 4px;
 }
 
-i.icon.ion-md-thumbs-up {
-    color: #4CAF50;
-}
-
 i.icon {
     margin-right: .5rem;
     background: white;
@@ -74,14 +64,20 @@ i.icon {
     transition: all 320ms ease-in-out;
 }
 
+i.icon.ion-md-thumbs-up {
+    background-color: #4CAF50;
+    color: #4CAF50;
+}
+
 i.icon.ion-md-thumbs-up:hover {
-    background: #DCEDC8;
+    transform: scale(1.1);
 }
 
 i.icon.ion-md-thumbs-down {
+    background-color: #ee0000;
     color: #e00;
 }
 
 i.icon.ion-md-thumbs-down:hover {
-    background: #FFEBEE;
+    transform: scale(1.1);
 }
