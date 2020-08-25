@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import SearchCity from "../components/SearchCity";
 import ActualTime from "../components/ActualTime";
+import axios from "axios";
 
 export default function Header() {
   const TopNav = styled.div`
@@ -26,6 +27,25 @@ export default function Header() {
     marginTop: "0.55%",
   };
 
+  function sendPost() {
+    axios
+      .post("http://localhost:8080/auth/signin", {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Request-Method": "POST",
+          "Access-Control-Allow-Headers":
+            "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+        },
+        data: {
+          username: "admin",
+          password: "password",
+        },
+      })
+      .then(function (response) {
+        console.log(response);
+      });
+  }
+
   return (
     <TopNav>
       <Link className="header-link" style={Links} to="/">
@@ -39,6 +59,7 @@ export default function Header() {
       </a>
       <ActualTime />
       <SearchCity />
+      <button onClick={sendPost}>log in</button>
     </TopNav>
   );
 }
