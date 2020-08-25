@@ -32,9 +32,11 @@ export default function Header() {
       .post("http://localhost:8080/auth/signin", {
         headers: {
           "Access-Control-Allow-Origin": "*",
-          "Access-Control-Request-Method": "POST",
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Request-Methods": "PUT,POST,GET,DELETE,OPTIONS",
           "Access-Control-Allow-Headers":
-            "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+            "content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, content-type",
+          "Content-Type": "application/json",
         },
         data: {
           username: "admin",
