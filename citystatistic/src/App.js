@@ -4,6 +4,7 @@ import CitiesByContinent from "./components/CitiesByContinent";
 import CityStat from "./components/CityStat";
 import CompareCity from "./components/CompareCity";
 import FavouriteCities from "./components/FavouriteCities";
+import Registration from "./components/Registration";
 
 import Header from "./layout/Header";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/city/:city" component={CityStat} />
         <Route exact path="/compare" component={CompareCity} />
         <Route exact path="/my-favourite-cities" component={FavouriteCities} />
+        <Route exact path="/register" component={Registration} />
       </Router>
     </div>
   );
