@@ -5,11 +5,16 @@ import SearchCity from "../components/SearchCity";
 import ActualTime from "../components/ActualTime";
 import { useCookies } from "react-cookie";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 import { UserContext } from "../context/UserContext";
 
 export default function Header() {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
-  const [userName, setUserName] = useContext(UserContext);
+  const [userContextName, setUserContextName] = useContext(UserContext);
+  if (cookies["token"]) {
+    console.log("name: ", jwt_decode(cookies["token"])["sub"]);
+    setUserContextName(jwt_decode(cookies["token"])["sub"]);
+  }
   const TopNav = styled.div`
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.7);
@@ -31,7 +36,9 @@ export default function Header() {
     marginTop: "0.55%",
   };
   function logOut() {
-    removeCookie("token");
+    removeCookie("token", { path: "/" });
+    setUserContextName();
+    window.location.href = "/";
   }
   function showMe() {
     axios({
@@ -69,7 +76,9 @@ export default function Header() {
       <SearchCity />
       <button onClick={logOut}>LOGOUT</button>
       <button onClick={showMe}>ME</button>
-      {"Logged in: " + userName}
+      <div>
+        {userContextName == null ? "" : "Logged in as: " + userContextName}
+      </div>
     </TopNav>
   );
 }

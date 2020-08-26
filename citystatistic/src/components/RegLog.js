@@ -2,12 +2,9 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import "../regOrLog.css";
-import { UserContext } from "../context/UserContext";
-import jwt_decode from "jwt-decode";
 
 export default function RegLog() {
   const [cookies, setCookie] = useCookies(["token"]);
-  const [userName, setUserName] = useContext(UserContext);
   const [field, setField] = useState("login");
   const regRoute = "http://localhost:8080/auth/registration";
   const logRoute = "http://localhost:8080/auth/signin";
@@ -27,7 +24,7 @@ export default function RegLog() {
       .then(function (response) {
         setCookie("token", response.data.token);
         console.log(response);
-        setUserName(jwt_decode(response.data.token)["sub"]);
+
         window.location.href = "/";
       })
       .catch(function (error) {
@@ -47,7 +44,6 @@ export default function RegLog() {
       })
       .then(function (response) {
         setCookie("token", response.data.token);
-        setUserName(jwt_decode(response.data.token)["sub"]);
         window.location.href = "/";
       })
       .catch(function (error) {
