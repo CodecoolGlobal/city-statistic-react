@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import SearchCity from "../components/SearchCity";
 import ActualTime from "../components/ActualTime";
 import { useCookies } from "react-cookie";
 import axios from "axios";
+import { UserContext } from "../context/UserContext";
 
 export default function Header() {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
-
+  const [userName, setUserName] = useContext(UserContext);
   const TopNav = styled.div`
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.7);
@@ -68,6 +69,7 @@ export default function Header() {
       <SearchCity />
       <button onClick={logOut}>LOGOUT</button>
       <button onClick={showMe}>ME</button>
+      {"Logged in: " + userName}
     </TopNav>
   );
 }

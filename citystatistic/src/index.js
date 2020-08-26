@@ -8,14 +8,17 @@ import "./comments.css";
 import App from "./App";
 //import { DefaultCitiesProvider } from "./context/DefaultCitiesContext";
 import { AllCitySlugProvider } from "./context/AllCitySlugContext";
+import { UserContextProvider } from "./context/UserContext";
 import { CookiesProvider } from "react-cookie";
 
 ReactDOM.render(
   <React.StrictMode>
     <CookiesProvider>
-      <AllCitySlugProvider>
-        <App />
-      </AllCitySlugProvider>
+      <UserContextProvider>
+        <AllCitySlugProvider>
+          <App />
+        </AllCitySlugProvider>
+      </UserContextProvider>
     </CookiesProvider>
   </React.StrictMode>,
   document.getElementById("root")
