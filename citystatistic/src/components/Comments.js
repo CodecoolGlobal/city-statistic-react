@@ -2,11 +2,10 @@ import React from "react";
 
 export default function Comments(props) {
     let comments = props.comments;
-
     return (
         <div>
             <ul id="comment-container" className="comments">
-                {comments.map(function (comment) {
+                {comments.reverse().map(function (comment) {
                     return <li>
                         <div className="user-comment-card">
                             <img className="user-avatar"
