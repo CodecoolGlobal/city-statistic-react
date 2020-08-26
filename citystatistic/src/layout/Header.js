@@ -54,9 +54,13 @@ export default function Header() {
       <Link className="header-link" style={Links} to="/compare">
         Compare
       </Link>
-      <Link className="header-link" style={Links} to="/register">
-        Register
-      </Link>
+      {cookies["token"] ? (
+        ""
+      ) : (
+        <Link className="header-link" style={Links} to="/reg-or-log">
+          LogIn or Register
+        </Link>
+      )}
       <a className="header-link" style={Links} href="/my-favourite-cities">
         My Favourites
       </a>
