@@ -1,20 +1,25 @@
 import React from "react";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 
 export default function Registration() {
+  const [cookies, setCookie] = useCookies(["token"]);
+
   function regsiterUser() {
     let userName = document.querySelector("#register-username").value;
     let userPassword = document.querySelector("#register-password").value;
     let userEmail = document.querySelector("#register-email").value;
-
+    let reg = "http://localhost:8080/auth/registration";
+    let log = "http://localhost:8080/auth/signin";
     axios
-      .post("http://localhost:8080/auth/registration", {
+      .post(reg, {
         username: userName,
         password: userPassword,
         email: userEmail,
       })
       .then(function (response) {
-        localStorage.setItem("authorization", response.data.token);
+        setCookie("token", response.data.token);
+        console.log(response);
         window.location.href = "/";
       })
       .catch(function (error) {

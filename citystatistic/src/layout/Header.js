@@ -3,8 +3,12 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import SearchCity from "../components/SearchCity";
 import ActualTime from "../components/ActualTime";
+import { useCookies } from "react-cookie";
+import axios from "axios";
 
 export default function Header() {
+  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
+
   const TopNav = styled.div`
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.7);
@@ -25,7 +29,23 @@ export default function Header() {
     fontSize: "25px",
     marginTop: "0.55%",
   };
-
+  function logOut() {
+    removeCookie("token");
+  }
+  function showMe() {
+    axios({
+      method: "get",
+      url: "http://localhost:8080/auth/me",
+      headers: { Authorization: `Bearer ${cookies["token"]}` },
+      data: {},
+    })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
   return (
     <TopNav>
       <Link className="header-link" style={Links} to="/">
@@ -42,6 +62,8 @@ export default function Header() {
       </a>
       <ActualTime />
       <SearchCity />
+      <button onClick={logOut}>LOGOUT</button>
+      <button onClick={showMe}>ME</button>
     </TopNav>
   );
 }
