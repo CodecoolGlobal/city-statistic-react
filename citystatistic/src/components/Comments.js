@@ -1,4 +1,8 @@
 import React from "react";
+import { Icon, InlineIcon } from '@iconify/react';
+import thumbsUp from '@iconify/icons-fa-solid/thumbs-up';
+import thumbsDown from '@iconify/icons-fa-solid/thumbs-down';
+
 
 export default function Comments(props) {
     let comments = props.comments;
@@ -15,8 +19,8 @@ export default function Comments(props) {
                                 <div className="user__comment">
                                     {comment}</div>
                                 <div className="user__comment__reaction">
-                                    <i className="icon ion-md-thumbs-up"/> <small>0</small>
-                                    <i className="icon ion-md-thumbs-down"/> <small>0</small>
+                                    <Icon icon={thumbsUp} color="green" width="24"/> <small>0</small>
+                                    <Icon icon={thumbsDown} color="red" width="24" /> <small>0</small>
                                 </div>
                             </div>
                         </div>
