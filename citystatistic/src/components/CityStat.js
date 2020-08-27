@@ -78,7 +78,7 @@ export default function CityStat(props) {
         {!cookies["auth"] ? (
           ""
         ) : (
-          <CommentForm citySlug={cityData[0].citySlug} />
+          <CommentForm citySlug={cityData[0].citySlug} comments = {cityData[0].comments}/>
         )}
         <Comment comments={cityData[0].comments} />
       </div>

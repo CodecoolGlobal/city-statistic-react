@@ -6,6 +6,7 @@ export default function CommentForm(props) {
   let citySlug = props.citySlug;
   let [textContent, setTextContent] = useState("");
   const [cookies, setCookie, removeCookie] = useCookies(["auth"]);
+    let [comments, setComments] = useState(props.comments);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -34,10 +35,10 @@ export default function CommentForm(props) {
     e.target.reset();
   }
 
-  function handleChange(e) {
-    e.preventDefault();
-    setTextContent(document.getElementById("myTextarea").value);
-  }
+    function handleChange(e) {
+        e.preventDefault();
+        setTextContent(document.getElementById("myTextarea").value)
+    }
 
   return (
     <div>
