@@ -2,6 +2,11 @@ small {
   margin: 0 7% 0 7%
 }
 
+.replies {
+  color: #333333;
+  background-color: #4caf50;
+}
+
 #myTextarea {
   align-content: center;
   border: 0;
