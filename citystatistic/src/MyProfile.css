@@ -1,7 +1,7 @@
 html {
   height: 100%;
 }
-*,
+
 ::after,
 ::before {
   box-sizing: initial;
@@ -9,7 +9,8 @@ html {
 
 .body-container {
   background-image: url("/bg.png");
-  background-repeat: repeat;
+  background-repeat: no-repeat;
+  background-color: #bcdee7;
   background-size: contain;
   position: fixed;
   padding: 0px;
