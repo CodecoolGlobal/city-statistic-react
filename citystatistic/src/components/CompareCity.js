@@ -46,7 +46,38 @@ export default function CompareCity() {
     setRightCityData([]);
   }
   if (!cookies["auth"]) {
-    return <Link to="/reg-or-log">Please login or register</Link>;
+    return (
+      <div>
+        <img
+          style={{
+            zIndex: "-1",
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+          height="500"
+          src="/pngwave.png"
+          alt="wave"
+        />
+        <Link
+          style={{
+            position: "fixed",
+            background: "rgba(0, 0, 0, 0.5)",
+            top: "50%",
+            left: "50%",
+            /* bring your own prefixes */
+            transform: "translate(-50%, -50%)",
+            fontSize: "5rem",
+            color: "white",
+            padding: "3px 20px",
+          }}
+          to="/reg-or-log"
+        >
+          Please login or register
+        </Link>
+      </div>
+    );
   } else if (cityData.length < 1 || rightCityData.length < 1) {
     return (
       <table id="wrapper">

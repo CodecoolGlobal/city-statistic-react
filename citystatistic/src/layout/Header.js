@@ -78,12 +78,12 @@ export default function Header() {
         </a>
       )}
       <ActualTime />
-      <SearchCity />
-      <Button onClick={logOut}>logout</Button>
-      {/* <button onClick={showMe}>ME</button> */}
-      <div>
+      {!cookies["auth"] ? "" : <Button onClick={logOut}>logout</Button>}
+      <div style={{ float: "right", marginTop: "28px" }}>
         {userContextName == null ? "" : "Logged in as: " + userContextName}
       </div>
+      <SearchCity />
+      {/* <button onClick={showMe}>ME</button> */}
     </TopNav>
   );
 }
@@ -92,8 +92,9 @@ const Button = styled.button`
   float: right;
   background-color: #b1b493;
   padding: 8px;
-  margin-top: 8px;
-  margin-right: 16px;
+  margin-top: 21px;
+  margin-right: 55px;
+  margin-left: 12px;
   background: #b1b493;
   font-size: 17px;
   border: none;
