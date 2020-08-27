@@ -9,7 +9,12 @@ export default function Comments(props) {
     let [replyContent, setReplyContent] = useState("");
 
     function handleReply(e) {
-
+        let replyForm = e.currentTarget.nextSibling
+        if (replyForm.style.display === "none") {
+            replyForm.style.display = "block";
+        } else {
+            replyForm.style.display = "none";
+        }
     }
 
     function handleChange(e) {
@@ -67,7 +72,12 @@ export default function Comments(props) {
                                         <Icon icon={thumbsDown} color="red" width="24"/> <small id = {comment.id + "down"}>{comment.downvote}</small>
                                     </div>
                                 </div>
-                                <button onClick={handleReply}>Reply</button>
+                                <button id="replySubmit" onClick={handleReply}>Reply</button>
+                                <form id={"replyForm" + comment.id} className="replyForm" onSubmit={handleReplySubmit} data-id = {comment.id}>
+                                    <textarea id={"replyTextArea" + comment.id} className="replyTextArea" onChange={handleChange} placeholder="Share your opinion about this comment..."></textarea>
+                                    <button id="replySubmit" type="submit">Submit
+                                    </button>
+                                </form>
                                 <div className="replies">
                                     <ul>
                                         {comment.replies.map(function (reply){
@@ -77,11 +87,6 @@ export default function Comments(props) {
                                         })}
                                     </ul>
                                 </div>
-                                <form id="commentForm" onSubmit={handleReplySubmit} data-id = {comment.id}>
-                                    <textarea id={"replyTextArea" + comment.id} onChange={handleChange} placeholder="Share your opinion..."></textarea>
-                                    <button id="submit" type="submit">Submit
-                                    </button>
-                                </form>
                             </div>
                         </div>
                     </li>
