@@ -15,6 +15,7 @@ export default function Header() {
     console.log("name: ", jwt_decode(cookies["token"])["sub"]);
     setUserContextName(jwt_decode(cookies["token"])["sub"]);
   }
+
   const TopNav = styled.div`
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.7);
