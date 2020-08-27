@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import "../regOrLog.css";
 
 export default function RegLog() {
-  const [cookies, setCookie] = useCookies(["token"]);
+  const [cookies, setCookie] = useCookies(["auth"]);
   const [field, setField] = useState("login");
   const regRoute = "http://localhost:8080/auth/registration";
   const logRoute = "http://localhost:8080/auth/signin";
@@ -22,7 +22,7 @@ export default function RegLog() {
         email: userEmail,
       })
       .then(function (response) {
-        setCookie("token", response.data.token);
+        setCookie("auth", response.data.token, { path: "/" });
         console.log(response);
 
         window.location.href = "/";
@@ -43,7 +43,7 @@ export default function RegLog() {
         password: userPassword,
       })
       .then(function (response) {
-        setCookie("token", response.data.token);
+        setCookie("auth", response.data.token, { path: "/" });
         window.location.href = "/";
       })
       .catch(function (error) {

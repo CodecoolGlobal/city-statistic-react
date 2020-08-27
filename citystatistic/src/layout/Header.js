@@ -11,9 +11,9 @@ import { UserContext } from "../context/UserContext";
 export default function Header() {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const [userContextName, setUserContextName] = useContext(UserContext);
-  if (cookies["token"]) {
-    console.log("name: ", jwt_decode(cookies["token"])["sub"]);
-    setUserContextName(jwt_decode(cookies["token"])["sub"]);
+  if (cookies["auth"]) {
+    console.log("name: ", jwt_decode(cookies["auth"])["sub"]);
+    setUserContextName(jwt_decode(cookies["auth"])["sub"]);
   }
 
   const TopNav = styled.div`
@@ -37,7 +37,7 @@ export default function Header() {
     marginTop: "0.55%",
   };
   function logOut() {
-    removeCookie("token", { path: "/" });
+    removeCookie("auth", { path: "/" });
     setUserContextName();
     window.location.href = "/";
   }
@@ -45,7 +45,7 @@ export default function Header() {
     axios({
       method: "get",
       url: "http://localhost:8080/auth/me",
-      headers: { Authorization: `Bearer ${cookies["token"]}` },
+      headers: { Authorization: `Bearer ${cookies["auth"]}` },
       data: {},
     })
       .then(function (response) {
