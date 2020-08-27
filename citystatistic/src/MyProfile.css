@@ -54,6 +54,7 @@ h2 {
 }
 p {
   margin: 0px;
+  color: black;
 }
 .profile-card {
   background: #ffb300;
@@ -125,10 +126,10 @@ p {
     #ffc107 100%
   );
   background: linear-gradient(
-    #2196f3 0%,
-    #2196f3 50%,
-    #ffc107 50%,
-    #ffc107 100%
+    #2deb13 0%,
+    #2deb13 50%,
+    #2deb13 50%,
+    #2deb13 100%
   );
   -webkit-border-radius: 50%;
   border-radius: 50%;
