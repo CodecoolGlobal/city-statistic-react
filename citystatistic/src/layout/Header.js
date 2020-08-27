@@ -63,23 +63,42 @@ export default function Header() {
       <Link className="header-link" style={Links} to="/compare">
         Compare
       </Link>
-      {cookies["token"] ? (
+      {cookies["auth"] ? (
         ""
       ) : (
         <Link className="header-link" style={Links} to="/reg-or-log">
           LogIn or Register
         </Link>
       )}
-      <a className="header-link" style={Links} href="/my-favourite-cities">
-        My Favourites
-      </a>
+      {!cookies["auth"] ? (
+        ""
+      ) : (
+        <a className="header-link" style={Links} href="/my-favourite-cities">
+          My Favourites
+        </a>
+      )}
       <ActualTime />
       <SearchCity />
-      <button onClick={logOut}>LOGOUT</button>
-      <button onClick={showMe}>ME</button>
+      <Button onClick={logOut}>logout</Button>
+      {/* <button onClick={showMe}>ME</button> */}
       <div>
         {userContextName == null ? "" : "Logged in as: " + userContextName}
       </div>
     </TopNav>
   );
 }
+
+const Button = styled.button`
+  float: right;
+  background-color: #b1b493;
+  padding: 8px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #b1b493;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background: #ccc;
+  }
+`;

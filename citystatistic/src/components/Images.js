@@ -53,21 +53,30 @@ export default function Images(props) {
   }
   if (props.img.length < 1) {
     return (
-      <div class="filebase-container">
-        <FileBase64 multiple={true} onDone={getFiles} />
-        <button id="upload-button" onClick={uploadImage}>
-          upload
-        </button>
+      <div>
+        {!cookies["auth"] ? (
+          ""
+        ) : (
+          <div class="filebase-container">
+            <FileBase64 multiple={true} onDone={getFiles} />
+            <button id="upload-button" onClick={uploadImage}>
+              upload
+            </button>
+          </div>
+        )}
       </div>
     );
   } else {
     return (
       <div>
-        <div class="filebase-container">
-          <FileBase64 multiple={true} onDone={getFiles} />
-          <button onClick={uploadImage}>upload</button>
-        </div>
-
+        {!cookies["auth"] ? (
+          ""
+        ) : (
+          <div class="filebase-container">
+            <FileBase64 multiple={true} onDone={getFiles} />
+            <button onClick={uploadImage}>upload</button>
+          </div>
+        )}
         <div class="slideshow-container">
           <div class="mySlides">
             <img class="slide-image" src={props.img[page]} />
