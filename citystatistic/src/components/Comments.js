@@ -72,14 +72,14 @@ export default function Comments(props) {
                                     <ul>
                                         {comment.replies.map(function (reply){
                                             return <li>
-                                                <p>{reply}</p>
+                                                <p className="user-comment-card">{reply}</p>
                                             </li>
                                         })}
                                     </ul>
                                 </div>
                                 <form id="commentForm" onSubmit={handleReplySubmit} data-id = {comment.id}>
                                     <textarea id={"replyTextArea" + comment.id} onChange={handleChange} placeholder="Share your opinion..."></textarea>
-                                    <button id="submit" type="submit">Submit
+                                    <button className="reply-button" type="submit">Submit
                                     </button>
                                 </form>
                             </div>
