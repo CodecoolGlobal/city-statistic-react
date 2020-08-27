@@ -5,9 +5,12 @@ import Salary from "../components/Salary";
 import LeftSalary from "../components/LeftSalary";
 import axios from "axios";
 import { AllCitySlugContext } from "../context/AllCitySlugContext";
+import { useCookies } from "react-cookie";
+import { Link } from "react-router-dom";
 
 export default function CompareCity() {
   const [citySlugs] = useContext(AllCitySlugContext);
+  const [cookies, setCookie, removeCookie] = useCookies(["auth"]);
 
   let [cityData, setCityData] = useState([]);
   let [rightCityData, setRightCityData] = useState([]);
@@ -42,7 +45,9 @@ export default function CompareCity() {
     setRightCity(document.querySelector("#city-name2").value);
     setRightCityData([]);
   }
-  if (cityData.length < 1 || rightCityData.length < 1) {
+  if (!cookies["auth"]) {
+    return <Link to="/reg-or-log">Please login or register</Link>;
+  } else if (cityData.length < 1 || rightCityData.length < 1) {
     return (
       <table id="wrapper">
         <tr>
