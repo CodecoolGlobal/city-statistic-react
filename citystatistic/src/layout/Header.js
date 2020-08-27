@@ -9,7 +9,7 @@ import jwt_decode from "jwt-decode";
 import { UserContext } from "../context/UserContext";
 
 export default function Header() {
-  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["auth"]);
   const [userContextName, setUserContextName] = useContext(UserContext);
   if (cookies["auth"]) {
     console.log("name: ", jwt_decode(cookies["auth"])["sub"]);
