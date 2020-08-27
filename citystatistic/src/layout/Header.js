@@ -66,9 +66,14 @@ export default function Header() {
       {cookies["auth"] ? (
         ""
       ) : (
-        <Link className="header-link" style={Links} to="/reg-or-log">
-          LogIn or Register
-        </Link>
+        <div>
+          <Link className="header-link" style={Links} to="/reg-or-log">
+            LogIn or Register
+          </Link>
+          <Link className="header-link" style={Links} to="/my-profile">
+            My Profile
+          </Link>
+        </div>
       )}
       {!cookies["auth"] ? (
         ""

@@ -5,7 +5,7 @@ import CityStat from "./components/CityStat";
 import CompareCity from "./components/CompareCity";
 import FavouriteCities from "./components/FavouriteCities";
 import RegLog from "./components/RegLog";
-import Logout from "./components/Logout";
+import MyProfile from "./components/MyProfile";
 
 import Header from "./layout/Header";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -21,7 +21,7 @@ function App() {
         <Route exact path="/compare" component={CompareCity} />
         <Route exact path="/my-favourite-cities" component={FavouriteCities} />
         <Route exact path="/reg-or-log" component={RegLog} />
-        {/* <Route exact path="/logout" component={Logout} /> */}
+        <Route exact path="/my-profile" component={MyProfile} />
       </Router>
     </div>
   );
