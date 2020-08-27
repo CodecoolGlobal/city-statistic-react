@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import "../slideshow.css";
 import FileBase64 from "react-file-base64";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 
 export default function Images(props) {
   let page = 0;
   const [files, setFiles] = useState([]);
+  const [cookies, setCookie, removeCookie] = useCookies(["auth"]);
 
   function nextSlide() {
     if (page === props.img.length - 1) {
@@ -41,7 +43,7 @@ export default function Images(props) {
     axios({
       method: "post",
       url: `http://localhost:8080/saveimage/${props.slug}`,
-      headers: {},
+      headers: { Authorization: `Bearer ${cookies["auth"]}` },
       data: {
         base64: `${files[0].base64}`,
       },
