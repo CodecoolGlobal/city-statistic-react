@@ -6,11 +6,10 @@ import axios from "axios";
 
 
 export default function Comments(props) {
-    let comments = props.comments
 
     function handleUpvote(e) {
-        let element = document.getElementById("upvotes")
-        let id = document.getElementById("commentID").innerHTML
+        let element = document.getElementById(e.currentTarget.closest("div").dataset.id)
+        let id = e.currentTarget.dataset.id
         let value = element.innerHTML
         value++
         element.innerHTML = value;
@@ -18,35 +17,33 @@ export default function Comments(props) {
     }
 
     function handleDownvote(e) {
-        let element = document.getElementById("downvotes")
-        let id = document.getElementById("commentID").innerHTML
-        let value = element.innerText
+        let element = document.getElementById(e.currentTarget.closest("div").dataset.id + "down")
+        console.log(e.currentTarget)
+        let id = e.currentTarget.dataset.id
+        let value = element.innerHTML
         value++
-        element.innerText = value;
+        element.innerHTML = value;
         axios.put('http://localhost:8080/rate/' + id, {rate: "downvote"}).then(res => console.log(res))
-
     }
 
     return (
         <div>
             <ul id="comment-container" className="comments">
-                {comments.reverse().map(function (comment) {
-                    comment = comment.split(",")
+                {props.comments.reverse().map(function (comment) {
                     return <li>
                         <div className="user-comment-card">
                             <img className="user-avatar"
                                  src="https://library.kissclipart.com/20180904/ese/kissclipart-user-icon-png-clipart-computer-icons-user-66fe7db07b02eb73.jpg"/>
                             <div className="user-info">
-                                <p id="commentID" hidden>{comment[4]}</p>
-                                <h4 className="user__name">{comment[3]}</h4>
+                                <h4 className="user__name">{}</h4>
                                 <div className="user__comment">
-                                    {comment[0]}</div>
+                                    {comment.comment}</div>
                                 <div className="user__comment__reaction">
-                                    <div onClick={handleUpvote}>
-                                        <Icon icon={thumbsUp} color="green" width="24"/> <small id="upvotes">{comment[1]}</small>
+                                    <div onClick={handleUpvote} data-id={comment.id}>
+                                        <Icon icon={thumbsUp} color="green" width="24"/><small id = {comment.id} >{comment.upvote}</small>
                                     </div>
-                                    <div onClick={handleDownvote}>
-                                        <Icon icon={thumbsDown} color="red" width="24"/> <small id="downvotes">{comment[2]}</small>
+                                    <div onClick={handleDownvote} data-id={comment.id} class = "down">
+                                        <Icon icon={thumbsDown} color="red" width="24"/> <small id = {comment.id + "down"}>{comment.downvote}</small>
                                     </div>
                                 </div>
                             </div>

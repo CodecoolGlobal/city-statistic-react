@@ -10,7 +10,7 @@ export default function CommentForm(props) {
         e.preventDefault();
         if (!textContent == "") {
             axios.post('http://localhost:8080/add-comment/' + citySlug, {comment: textContent}).then(res => console.log(res))
-            setComments(... textContent);
+            setComments([...comments, textContent]);
         }
         e.target.reset();
 
