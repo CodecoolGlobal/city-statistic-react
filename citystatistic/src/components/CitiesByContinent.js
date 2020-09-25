@@ -3,16 +3,23 @@ import axios from "axios";
 import DisplayCity from "./DisplayCity";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 export default function CitiesByContinent(props) {
   let [cityData, setCityData] = useState([]);
   const continents = "AF EU NA SA OC AS";
+  const [cookies, setCookie, removeCookie] = useCookies(["auth"]);
+
   useEffect(() => {
     if (!continents.includes(props.match.params.id)) {
       window.location.href = "/";
     } else {
-      const apiPath = `http://localhost:8080/continent/${props.match.params.id}`;
-      axios.get(apiPath).then((res) => {
+      axios({
+        method: "get",
+        url: `http://localhost:8080/continent/${props.match.params.id}`,
+        headers: { Authorization: `Bearer ${cookies["auth"]}` },
+        data: {},
+      }).then((res) => {
         setCityData((oldCityData) => [...oldCityData, res.data]);
       });
     }

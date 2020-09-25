@@ -3,13 +3,19 @@ import DisplayCity from "./DisplayCity";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 
 export default function FavouriteCities() {
   let [cityData, setCityData] = useState([]);
+  const [cookies, setCookie, removeCookie] = useCookies(["auth"]);
 
   useEffect(() => {
-    const apiPath = "http://localhost:8080/get-all-favourite-cities";
-    axios.get(apiPath).then((res) => {
+    axios({
+      method: "get",
+      url: "http://localhost:8080/get-all-favourite-cities",
+      headers: { Authorization: `Bearer ${cookies["auth"]}` },
+      data: {},
+    }).then((res) => {
       setCityData((oldCityData) => [...oldCityData, res.data]);
     });
   }, []);

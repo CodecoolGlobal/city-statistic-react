@@ -8,9 +8,11 @@ import CommentForm from "./CommentForm";
 import "../statCard.css";
 import "../CityStat.css";
 import { AllCitySlugContext } from "../context/AllCitySlugContext";
+import { useCookies } from "react-cookie";
 
 export default function CityStat(props) {
   let [cityData, setCityData] = useState([]);
+  const [cookies, setCookie, removeCookie] = useCookies(["auth"]);
 
   const [citySlugs] = useContext(AllCitySlugContext);
 
@@ -73,7 +75,11 @@ export default function CityStat(props) {
           <Salary salary={cityData[0].salaries} />
         </div>
         <Images slug={cityData[0].citySlug} img={cityData[0].images} />
-        <CommentForm citySlug={cityData[0].citySlug} />
+        {!cookies["auth"] ? (
+          ""
+        ) : (
+          <CommentForm citySlug={cityData[0].citySlug} comments = {cityData[0].comments}/>
+        )}
         <Comment comments={cityData[0].comments} />
       </div>
     );

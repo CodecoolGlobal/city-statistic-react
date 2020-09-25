@@ -111,3 +111,7 @@ code {
   transform: translate(630%, 30%);
   display: inline-block;
 }
+
+.hide.image {
+  display: none;
+}

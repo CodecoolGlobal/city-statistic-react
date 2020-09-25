@@ -6,14 +6,19 @@ import "./comments.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./comments.css";
 import App from "./App";
-//import { DefaultCitiesProvider } from "./context/DefaultCitiesContext";
 import { AllCitySlugProvider } from "./context/AllCitySlugContext";
+import { UserProvider } from "./context/UserContext";
+import { CookiesProvider } from "react-cookie";
 
 ReactDOM.render(
   <React.StrictMode>
-    <AllCitySlugProvider>
-      <App />
-    </AllCitySlugProvider>
+    <UserProvider>
+      <CookiesProvider>
+        <AllCitySlugProvider>
+          <App />
+        </AllCitySlugProvider>
+      </CookiesProvider>
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

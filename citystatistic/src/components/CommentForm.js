@@ -1,17 +1,24 @@
-import React, {useState} from "react";
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
+import { useCookies } from "react-cookie";
 
 export default function CommentForm(props) {
-    let citySlug = props.citySlug;
-    let [textContent, setTextContent] = useState("");
+  let citySlug = props.citySlug;
+  let [textContent, setTextContent] = useState("");
+  const [cookies, setCookie, removeCookie] = useCookies(["auth"]);
+    let [comments, setComments] = useState(props.comments);
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        if (!textContent == "") {
-            axios.post('http://localhost:8080/add-comment/' + citySlug, {comment: textContent}).then(res => console.log(res))
-            let commentSection = document.getElementById("comment-container")
-            commentSection.innerHTML +=
-                `<li>
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!textContent == "") {
+      axios({
+        method: "post",
+        url: `http://localhost:8080/add-comment/${citySlug}`,
+        headers: { Authorization: `Bearer ${cookies["auth"]}` },
+        data: { comment: textContent },
+      });
+      let commentSection = document.getElementById("comment-container");
+      commentSection.innerHTML += `<li>
                 <div class="user-comment-card">
                     <img class="user-avatar" src="https://library.kissclipart.com/20180904/ese/kissclipart-user-icon-png-clipart-computer-icons-user-66fe7db07b02eb73.jpg"/>
                     <div class="user-info">
@@ -23,25 +30,28 @@ export default function CommentForm(props) {
                             </div>
                     </div>
                 </div>
-            </li>`
-        }
-        e.target.reset();
-
+            </li>`;
     }
+    e.target.reset();
+  }
 
     function handleChange(e) {
         e.preventDefault();
         setTextContent(document.getElementById("myTextarea").value)
     }
 
-    return (
-        <div>
-            <form id="commentForm" onSubmit={handleSubmit}>
-                <textarea id="myTextarea" onChange={handleChange} placeholder="Add comment..."></textarea>
-                <button id="submit" type="submit">Submit
-                </button>
-            </form>
-        </div>
-    );
-
+  return (
+    <div>
+      <form id="commentForm" onSubmit={handleSubmit}>
+        <textarea
+          id="myTextarea"
+          onChange={handleChange}
+          placeholder="Add comment..."
+        ></textarea>
+        <button id="submit" type="submit">
+          Submit
+        </button>
+      </form>
+    </div>
+  );
 }
